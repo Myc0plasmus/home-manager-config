@@ -1,8 +1,5 @@
 {
-  home_username,
   inputs,
-  modules,
-  dev,
   config,
   pkgs,
   lib,
@@ -22,8 +19,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = home_username;
-  home.homeDirectory = "/home/${home_username}";
+  home.username = config.hostOptions.username;
+  home.homeDirectory = "/home/${config.hostOptions.username}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -38,7 +35,7 @@ in
     ./programs/mc.nix
     ./programs/zsh.nix
     ./programs/git.nix
-  ] ++ modules;
+  ] ++ config.hostOptions.home-modules;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # home.packages = [
@@ -97,7 +94,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    DEVICE_NAME = dev;
+    DEVICE_NAME = config.hostOptions.hostname;
   };
 
   # Let Home Manager install and manage itself.

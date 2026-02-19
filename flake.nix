@@ -18,7 +18,7 @@
 
     in
     {
-      homeModule = {home_username, modules, dev, ...}:
+      homeModule = {config, ...}:
       {
         imports = [
           home-manager.nixosModules.home-manager
@@ -26,9 +26,9 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit home_username modules dev inputs;
+          inherit inputs;
         };
-        home-manager.users."${home_username}" = ./home.nix;
+        home-manager.users."${config.hostOptions.username}" = ./home.nix;
       };
     };
 }
