@@ -18,7 +18,7 @@
 
     in
     {
-      homeModule = {config, modules, ...}:
+      homeModule = {username, modules, ...}:
       {
         imports = [
           home-manager.nixosModules.home-manager
@@ -28,7 +28,7 @@
         home-manager.extraSpecialArgs = {
           inherit inputs modules;
         };
-        home-manager.users."${config.hostOptions.username}" = ./home.nix;
+        home-manager.users."${username}" = ./home.nix;
       };
     };
 }
