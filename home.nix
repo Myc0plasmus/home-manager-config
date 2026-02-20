@@ -1,7 +1,7 @@
 {
   inputs,
   config,
-  modules,
+  protoHost,
   pkgs,
   lib,
   ...
@@ -21,7 +21,7 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = config.hostOptions.username;
-  home.homeDirectory = "/home/${config.hostOptions.username}";
+  home.homeDirectory = "/home/${protoHost.username}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -36,7 +36,7 @@ in
     ./programs/mc.nix
     ./programs/zsh.nix
     ./programs/git.nix
-  ] ++ modules;
+  ] ++ protoHost.hmModules;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # home.packages = [
@@ -95,7 +95,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    DEVICE_NAME = config.hostOptions.hostname;
+    DEVICE_NAME = protoHost.hostname;
   };
 
   # Let Home Manager install and manage itself.
