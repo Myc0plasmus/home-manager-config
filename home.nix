@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  modules,
   pkgs,
   lib,
   ...
@@ -35,7 +36,7 @@ in
     ./programs/mc.nix
     ./programs/zsh.nix
     ./programs/git.nix
-  ] ++ config.hostOptions.home-modules;
+  ] ++ modules;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # home.packages = [
