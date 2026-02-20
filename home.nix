@@ -20,7 +20,7 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = config.hostOptions.username;
+  home.username = protoHost.username;
   home.homeDirectory = "/home/${protoHost.username}";
 
   # This value determines the Home Manager release that your configuration is
