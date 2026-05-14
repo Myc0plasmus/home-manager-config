@@ -37,6 +37,7 @@ in
     ./programs/zsh.nix
     ./programs/git.nix
   ] ++ protoHost.hmModules;
+  gtk.gtk4.theme = config.gtk.theme;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # home.packages = [
